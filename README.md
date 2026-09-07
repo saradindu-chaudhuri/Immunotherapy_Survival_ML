@@ -1,2 +1,35 @@
 # Immunotherapy_Survival_ML
 Predictive Immunology &amp; Random Survival Forests for Immunotherapy Treatment Response
+# 🔬 Immunotherapy Response & Predictive Immunology Survival ML
+
+A quantitative health data science pipeline evaluating non-linear biomarker interactions and Progression-Free Survival (PFS) in immunotherapy clinical trial cohorts using **Cox Proportional Hazards** and **Random Survival Forests (RSF)**.
+
+---
+
+## 🎯 Key Findings & Performance Summary
+
+* **Baseline Cox Proportional Hazards:** Achieved a **0.710 Concordance Index**, confirming significant hazard increases driven by systemic inflammatory markers ($NLR$ $HR=1.16$, $CRP$ $HR=1.11$, $p < 0.005$).
+* **Random Survival Forest Ensemble:** Captured non-linear biological interactions, achieving a **0.762 Train C-Index**.
+* **Permutation Feature Importance:** Isolated **PD1_Expression** as the dominant predictive biomarker ($\Delta C\text{-Index} = 0.094$), outranking general systemic inflammation.
+
+| Model | Model Architecture | Test C-Index | Top Biomarker Driver |
+| :--- | :--- | :---: | :--- |
+| **Cox PH** | Parametric Linear Hazard | **0.710** | $PD1\text{-}Expression$ ($p < 0.005$) |
+| **Random Survival Forest** | Non-Linear Tree Ensemble | **0.666** | $PD1\text{-}Expression$ ($\Delta = 0.094$) |
+
+---
+
+## 🛠️ Tech Stack & Methods
+
+* **Languages:** Python 3.x (`pandas`, `numpy`, `matplotlib`)
+* **Survival Modeling:** `lifelines` (CoxPHFitter, Kaplan-Meier), `scikit-survival` (RandomSurvivalForest)
+* **Model Evaluation:** Concordance Index (C-Index), Log-Rank Significance Testing, Permutation Feature Importance (`sklearn.inspection`)
+
+---
+
+## 🚀 Pipeline Architecture
+
+1. **Synthetic Cohort Generation:** Multi-variable simulation incorporating systemic inflammatory markers ($NLR$, $CRP$), immune checkpoint expression ($PD1$), and demographic covariates.
+2. **Parametric Risk Estimation:** Fitting Cox PH models to determine linear hazard ratios and confidence intervals.
+3. **Non-Linear Ensemble Fitting:** Estimating survival functions across continuous feature splits using Random Survival Forests.
+4. **Permutation Importance:** Evaluating test-set degradation under covariate shuffling to rank biological relevance.
