@@ -45,3 +45,17 @@ To evaluate model transportability across independent sequencing platforms, we s
 | :--- | :---: | :--- |
 | **Raw Unharmonized Data** | 0.919 | Confounded by technical collection shifts |
 | **Within-Site Z-Harmonization** | **0.958** | Technical shifts eliminated; true biological signal isolated |
+
+### 🧬 Real-World Immunogenomic & SHAP Explainability Benchmark
+
+Evaluated machine learning performance on multi-gene immunogenomic expression profiles ($PDCD1/PD1$, $CD8A$, $CTLA4$, $Mutational\ Burden$) to predict Progression-Free Survival (PFS):
+
+* **Linear Baseline (Cox PH):** **0.600 C-Index** ($PD1$ protective hazard $HR=0.84, p=0.01$).
+* **Ensemble Model (Random Survival Forest):** **0.831 C-Index** (Captured non-linear gene-gene co-expression interactions).
+* **Model Interpretability (SHAP):** TreeExplainer isolated top genomic drivers and quantified exact feature contributions to individual risk scores.
+
+| Model Architecture | C-Index | Feature Mechanics |
+| :--- | :---: | :--- |
+| **Linear Cox PH** | 0.600 | Evaluates genes independently (misses co-expression) |
+| **Random Survival Forest** | **0.831** | Captures multi-gene non-linear interactions |
+| **SHAP Analysis** | — | Opens "black box" to rank gene importance |
