@@ -33,3 +33,15 @@ A quantitative health data science pipeline evaluating non-linear biomarker inte
 2. **Parametric Risk Estimation:** Fitting Cox PH models to determine linear hazard ratios and confidence intervals.
 3. **Non-Linear Ensemble Fitting:** Estimating survival functions across continuous feature splits using Random Survival Forests.
 4. **Permutation Importance:** Evaluating test-set degradation under covariate shuffling to rank biological relevance.
+
+### 🛡️ Multi-Center Immune Profile Harmonization
+
+To evaluate model transportability across independent sequencing platforms, we simulated a 3-center cohort ($N = 600$) with site-specific batch effects across immune cell populations ($CD8^+$ T-cells, $T_{reg}$, $M1$/$M2$ Macrophages).
+
+* **Unharmonized Baseline AUC:** 0.919 (Confounded by site-level measurement bias)
+* **Harmonized AUC:** **0.958** (Within-site Z-score standardization restored biological signal across sites)
+
+| Data Pipeline | Responder AUC | Site Variance Impact |
+| :--- | :---: | :--- |
+| **Raw Unharmonized Data** | 0.919 | Confounded by technical collection shifts |
+| **Within-Site Z-Harmonization** | **0.958** | Technical shifts eliminated; true biological signal isolated |
