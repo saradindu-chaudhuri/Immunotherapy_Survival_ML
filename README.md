@@ -59,3 +59,17 @@ Evaluated machine learning performance on multi-gene immunogenomic expression pr
 | **Linear Cox PH** | 0.600 | Evaluates genes independently (misses co-expression) |
 | **Random Survival Forest** | **0.831** | Captures multi-gene non-linear interactions |
 | **SHAP Analysis** | — | Opens "black box" to rank gene importance |
+
+### 🧪 Bulk RNA-Seq Immune Cell Type Deconvolution
+
+Implemented Non-Negative Least Squares (NNLS) mathematical unmixing against a verified marker signature matrix ($CD8A$, $CD4$, $FOXP3$, $CD68$, $NCAM1$) to infer relative immune cell abundances ($CD8^+$, $CD4^+$, $T_{reg}$, Macrophage, NK cells) from bulk expression profiles.
+
+* **Deconvolution Accuracy:** Reached Pearson correlation coefficients of **$r = 0.900 \text{--} 0.970$** across all target cell populations relative to ground truth.
+
+| Target Immune Population | Dominant Marker | Deconvolution Accuracy ($r$) |
+| :--- | :--- | :---: |
+| **Macrophage** | $CD68$ | **0.970** |
+| **CD8+ T-Cell** | $CD8A$ | **0.949** |
+| **NK Cell** | $NCAM1$ | **0.948** |
+| **CD4+ T-Cell** | $CD4$ | **0.922** |
+| **Regulatory T-Cell ($T_{reg}$)** | $FOXP3$ | **0.900** |
